@@ -337,7 +337,7 @@ instance's TaskSet instances so that it's easy to retrieve the client and make H
 tasks.
 
 Here's a simple example that makes a GET request to the */about* path (in this case we assume *self* 
-is an instance of a :py:class:`TaskSet <locust.core.TaskSet>` or :py:class:`HttpLocust <locust.core.Locust>` 
+is an instance of a :py:class:`TaskSet <locust.core.TaskSet>` or :py:class:`HttpLocust <locust.core.HttpLocust>` 
 class::
 
     response = self.client.get("/about")
@@ -355,6 +355,8 @@ a connection error, timeout, or similar will not raise an exception, but rather 
 Response object. The request will be reported as a failure in Locust's statistics. The returned dummy 
 Response's *content* attribute will be set to None, and its *status_code* will be 0.
 
+
+.. _catch-response:
 
 Manually controlling if a request should be considered successful or a failure
 ------------------------------------------------------------------------------
