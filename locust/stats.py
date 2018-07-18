@@ -76,6 +76,7 @@ class RequestStats(object):
         self.errors = {}
         self.total = StatsEntry(self, "Total", None, use_response_times_cache=True)
         self.start_time = None
+        self.stop_time = None
     
     @property
     def num_requests(self):

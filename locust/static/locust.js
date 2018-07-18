@@ -130,8 +130,19 @@ function updateStats() {
         $("#status_text").html(report.state);
         $("#userCount").html(report.user_count);
         $("#hatchRate").html(report.hatch_rate);
-        var startDateTime = new Date(report.start_time*1000);
-        $("#start_time").html(startDateTime.toLocaleString());
+        if(report.start_time !== null) {
+            var startDateTime = new Date(report.start_time*1000);
+            $("#start_date_time").html(startDateTime.toLocaleString());
+            var endDateTime = new Date();
+            if(report.stop_time !== null) {
+                endDateTime = new Date(report.stop_time*1000);
+            }
+            timeDiff = endDateTime - startDateTime;
+            var minutes = Math.floor(timeDiff / 60000);
+            var seconds = ((timeDiff % 60000) / 1000).toFixed(0);
+            var timeElapsed = minutes + "m " + (seconds < 10 ? '0' : '') + seconds + "s";
+            $("#elapsed_time").html(timeElapsed);                
+        }
 
         if (report.slaves) {
             slaves = (report.slaves).sort(sortBy(slaveSortAttribute, desc));

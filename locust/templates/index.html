@@ -14,10 +14,16 @@
                     <div class="label">HOST</div>
                     <div class="value" id="host_url">
                         {{host}}
-                    </div>
-                    <div class="label">STARTED</div>
-                    <div class="value" id="start_date_time">
+                    </div>                    
+                </div>
+                <div class="top_box box_time">
+                    <div class="label">START TIME</div>
+                    <div class="value font-normal" id="start_date_time">
                         {{start_date_time}}
+                    </div>                    
+                    <div class="label">ELAPSED TIME</div>
+                    <div class="value font-normal" id="elapsed_time">
+                        {{elapsed_time}}
                     </div>                    
                 </div>
                 <div class="top_box box_status">
@@ -26,7 +32,7 @@
                         {{state}}
                     </div>
                     <div class="user_count">
-                        <span id="userCount">{{user_count}}</span> users / <span id="hatchRate">{{hatch_rate}}</span>
+                        <span id="userCount">{{user_count}}</span> users / <span id="hatchRate">{{hatch_rate}}</span> hatch rate
                     </div>
                     <a href="#" class="new_test" id="new_test">New test</a>
                     <a href="#" class="edit_test">Edit</a>

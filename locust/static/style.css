@@ -130,7 +130,7 @@ a:hover {
     background: #4e4141;
 }
 
-#host_url, #start_date_time {
+#host_url, .top_box .font-normal {
     font-size: 14px;
     font-weight: normal;
 }
@@ -236,7 +236,7 @@ a:hover {
 .ready .status {display: none;}
 
 .stopped .boxes .edit_test, .ready .boxes .edit_test {display: none;}
-.stopped .boxes .user_count, .ready .boxes .user_count {display: none;}
+/*.stopped .boxes .user_count, .ready .boxes .user_count {display: none;}*/
 
 .running a.new_test, .ready a.new_test, .hatching a.new_test {display: none;}
 .running a.new_test {display: none;}
