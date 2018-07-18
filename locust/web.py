@@ -130,6 +130,7 @@ def request_stats():
     
     report["state"] = runners.locust_runner.state
     report["hatch_rate"] = runners.locust_runner.hatch_rate
+    report["start_time"] = runners.locust_runner.stats.start_time
     report["user_count"] = runners.locust_runner.user_count
 
     return jsonify(report)

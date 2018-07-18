@@ -127,8 +127,11 @@ function updateStats() {
         $("#total_rps").html(Math.round(report.total_rps*100)/100);
         //$("#fail_ratio").html(Math.round(report.fail_ratio*10000)/100);
         $("#fail_ratio").html(Math.round(report.fail_ratio*100));
-        $("#status_text").html(report.state+'/'+report.hatch_rate);
+        $("#status_text").html(report.state);
         $("#userCount").html(report.user_count);
+        $("#hatchRate").html(report.hatch_rate);
+        var startDateTime = new Date(report.start_time*1000);
+        $("#start_time").html(startDateTime.toLocaleString());
 
         if (report.slaves) {
             slaves = (report.slaves).sort(sortBy(slaveSortAttribute, desc));

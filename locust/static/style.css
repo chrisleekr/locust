@@ -130,7 +130,7 @@ a:hover {
     background: #4e4141;
 }
 
-#host_url {
+#host_url, #start_date_time {
     font-size: 14px;
     font-weight: normal;
 }
