@@ -127,7 +127,7 @@ function updateStats() {
         $("#total_rps").html(Math.round(report.total_rps*100)/100);
         //$("#fail_ratio").html(Math.round(report.fail_ratio*10000)/100);
         $("#fail_ratio").html(Math.round(report.fail_ratio*100));
-        $("#status_text").html(report.state);
+        $("#status_text").html(report.state+'/'+report.hatch_rate);
         $("#userCount").html(report.user_count);
 
         if (report.slaves) {
