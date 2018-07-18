@@ -275,9 +275,7 @@ class MasterLocustRunner(DistributedLocustRunner):
             logger.warning("You are running in distributed mode but have no slave servers connected. "
                            "Please connect slaves prior to swarming.")
             return
-
-        self.stats.start_time = time()
-        self.stats.stop_time = None
+        
         self.hatch_rate = hatch_rate
 
         self.num_clients = locust_count
@@ -290,6 +288,8 @@ class MasterLocustRunner(DistributedLocustRunner):
         if self.state != STATE_RUNNING and self.state != STATE_HATCHING:
             self.stats.clear_all()
             self.exceptions = {}
+            self.stats.start_time = time()
+            self.stats.stop_time = None
             events.master_start_hatching.fire()
         
         for client in six.itervalues(self.clients):
