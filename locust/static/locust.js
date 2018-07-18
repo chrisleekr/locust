@@ -129,8 +129,9 @@ function updateStats() {
         $("#fail_ratio").html(Math.round(report.fail_ratio*100));
         $("#status_text").html(report.state);
         $("#userCount").html(report.user_count);
-        $("#hatchRate").html(report.hatch_rate);
+        
         if(report.start_time !== null) {
+            $("#hatchRate").html(report.hatch_rate);
             var startDateTime = new Date(report.start_time*1000);
             $("#start_date_time").html(startDateTime.toLocaleString());
             var endDateTime = new Date();
@@ -142,6 +143,10 @@ function updateStats() {
             var seconds = ((timeDiff % 60000) / 1000).toFixed(0);
             var timeElapsed = minutes + "m " + (seconds < 10 ? '0' : '') + seconds + "s";
             $("#elapsed_time").html(timeElapsed);                
+        } else {
+            $("#hatchRate").html("0");
+            $("#start_date_time").html("N/A");
+            $("#elapsed_time").html("N/A");
         }
 
         if (report.slaves) {
