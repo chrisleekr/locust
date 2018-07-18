@@ -276,6 +276,10 @@ class MasterLocustRunner(DistributedLocustRunner):
                            "Please connect slaves prior to swarming.")
             return
 
+        self.stats.start_time = time()
+        self.stats.stop_time = None
+        self.hatch_rate = hatch_rate
+
         self.num_clients = locust_count
         slave_num_clients = locust_count // (num_slaves or 1)
         slave_hatch_rate = float(hatch_rate) / (num_slaves or 1)
@@ -300,11 +304,8 @@ class MasterLocustRunner(DistributedLocustRunner):
                 data["num_clients"] += 1
                 remaining -= 1
 
-            self.server.send(Message("hatch", data, None))
+            self.server.send(Message("hatch", data, None))        
         
-        self.stats.start_time = time()
-        self.stats.stop_time = None
-        self.hatch_rate = hatch_rate
         self.state = STATE_HATCHING
 
     def stop(self):
