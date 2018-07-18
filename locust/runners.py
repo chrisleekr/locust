@@ -180,8 +180,8 @@ class LocustRunner(object):
             self.hatching_greenlet.kill(block=True)
         self.locusts.kill(block=True)
         self.state = STATE_STOPPED
-        self.stats.stop_time = time()
         events.locust_stop_hatching.fire()
+        self.stats.stop_time = time()
     
     def quit(self):
         self.stop()
@@ -304,6 +304,7 @@ class MasterLocustRunner(DistributedLocustRunner):
         
         self.stats.start_time = time()
         self.stats.stop_time = None
+        self.hatch_rate = hatch_rate
         self.state = STATE_HATCHING
 
     def stop(self):
@@ -330,6 +331,7 @@ class MasterLocustRunner(DistributedLocustRunner):
                 del self.clients[msg.node_id]
                 if len(self.clients.hatching + self.clients.running) == 0:
                     self.state = STATE_STOPPED
+                    self.stats.stop_time = time()
                 logger.info("Removing %s client from running clients" % (msg.node_id))
             elif msg.type == "stats":
                 events.slave_report.fire(client_id=msg.node_id, data=msg.data)
